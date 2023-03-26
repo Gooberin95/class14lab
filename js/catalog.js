@@ -15,8 +15,11 @@ if(localStorage.cart){
   state.cart = new Cart([]);
 }
 
+// On screen load, we call this method to put all of the product options
+// (the things in the state.allProducts array) into the drop down list.
 function populateForm() {
-
+  
+  //TODO: Add an <option> tag inside the form's select for each product
   const selectElement = document.getElementById('items');
   for (let i in state.allProducts) {
     let optionTag = document.createElement('option');
@@ -27,7 +30,9 @@ function populateForm() {
 
 }
 
-
+// When someone submits the form, we need to add the selected item to the cart
+// object, save the whole thing back to local storage and update the screen
+// so that it shows the # of items in the cart and a quick preview of the cart itself.
 function handleSubmit(event) {
   event.preventDefault();
   // TODO: Prevent the page from reloading
